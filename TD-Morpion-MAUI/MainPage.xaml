@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TD_Morpion_MAUI.ViewModels"
              x:Class="TD_Morpion_MAUI.MainPage"
+             x:DataType="vm:MainViewModel"
              BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1A1A2E}">
 
     <VerticalStackLayout
@@ -11,7 +13,6 @@
         HorizontalOptions="Center">
 
         <Label
-            x:Name="TitleLabel"
             Text="Morpion"
             FontSize="36"
             FontAttributes="Bold"
@@ -19,65 +20,71 @@
             TextColor="{AppThemeBinding Light=#333333, Dark=#EEEEEE}" />
 
         <Label
-            x:Name="StatusLabel"
-            Text="Au tour de X"
+            Text="{Binding StatusText}"
+            TextColor="{Binding StatusColor}"
             FontSize="22"
             FontAttributes="Bold"
-            HorizontalOptions="Center"
-            TextColor="{AppThemeBinding Light=#512BD4, Dark=#B39DDB}" />
+            HorizontalOptions="Center" />
 
         <Grid
-            x:Name="GameGrid"
             RowDefinitions="100,100,100"
             ColumnDefinitions="100,100,100"
             RowSpacing="5"
             ColumnSpacing="5"
             HorizontalOptions="Center">
 
-            <Button Grid.Row="0" Grid.Column="0" x:Name="Btn0" Clicked="OnCellClicked"
+            <Button Grid.Row="0" Grid.Column="0"
+                    Text="{Binding Cells[0].Text}" TextColor="{Binding Cells[0].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="0"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="0" Grid.Column="1" x:Name="Btn1" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="0" Grid.Column="1"
+                    Text="{Binding Cells[1].Text}" TextColor="{Binding Cells[1].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="1"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="0" Grid.Column="2" x:Name="Btn2" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="0" Grid.Column="2"
+                    Text="{Binding Cells[2].Text}" TextColor="{Binding Cells[2].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="2"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
 
-            <Button Grid.Row="1" Grid.Column="0" x:Name="Btn3" Clicked="OnCellClicked"
+            <Button Grid.Row="1" Grid.Column="0"
+                    Text="{Binding Cells[3].Text}" TextColor="{Binding Cells[3].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="3"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="1" Grid.Column="1" x:Name="Btn4" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="1" Grid.Column="1"
+                    Text="{Binding Cells[4].Text}" TextColor="{Binding Cells[4].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="4"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="1" Grid.Column="2" x:Name="Btn5" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="1" Grid.Column="2"
+                    Text="{Binding Cells[5].Text}" TextColor="{Binding Cells[5].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="5"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
 
-            <Button Grid.Row="2" Grid.Column="0" x:Name="Btn6" Clicked="OnCellClicked"
+            <Button Grid.Row="2" Grid.Column="0"
+                    Text="{Binding Cells[6].Text}" TextColor="{Binding Cells[6].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="6"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="2" Grid.Column="1" x:Name="Btn7" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="2" Grid.Column="1"
+                    Text="{Binding Cells[7].Text}" TextColor="{Binding Cells[7].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="7"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
-            <Button Grid.Row="2" Grid.Column="2" x:Name="Btn8" Clicked="OnCellClicked"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
+            <Button Grid.Row="2" Grid.Column="2"
+                    Text="{Binding Cells[8].Text}" TextColor="{Binding Cells[8].TextColor}"
+                    Command="{Binding PlayCellCommand}" CommandParameter="8"
                     FontSize="40" FontAttributes="Bold" WidthRequest="100" HeightRequest="100"
-                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}"
-                    TextColor="#333333" CornerRadius="10" />
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#16213E}" CornerRadius="10" />
         </Grid>
 
         <Button
-            x:Name="ResetBtn"
             Text="Nouvelle partie"
-            Clicked="OnResetClicked"
+            Command="{Binding ResetCommand}"
             FontSize="18"
             BackgroundColor="#512BD4"
             TextColor="White"

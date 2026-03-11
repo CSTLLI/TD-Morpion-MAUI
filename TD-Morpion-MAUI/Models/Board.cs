@@ -68,4 +68,19 @@ public class Board
     {
         return _cells.Cast<char>().All(cell => cell == 'X' || cell == 'O');
     }
+
+    public int GetBotMove()
+    {
+        var emptyCells = new List<int>();
+        for (int i = 0; i < 9; i++)
+        {
+            int line = i / 3;
+            int column = i % 3;
+            if (_cells[line, column] == ' ')
+                emptyCells.Add(i);
+        }
+
+        var random = new Random();
+        return emptyCells[random.Next(emptyCells.Count)];
+    }
 }

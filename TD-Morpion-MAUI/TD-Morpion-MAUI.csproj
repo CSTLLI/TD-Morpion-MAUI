@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+        <!-- macCatalyst pour lancer l'app sur Mac ; Windows ajouté uniquement quand on build sous Windows -->
+        <TargetFrameworks>net10.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
 
         <!-- Note for MacCatalyst:
         The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
@@ -67,6 +69,11 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0"/>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Logique (Models/Services/ViewModels) extraite dans une lib net10.0 testable -->
+        <ProjectReference Include="..\TD-Morpion-MAUI.Core\TD-Morpion-MAUI.Core.csproj"/>
     </ItemGroup>
 
 </Project>

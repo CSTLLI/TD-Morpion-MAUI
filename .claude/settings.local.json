@@ -6,7 +6,29 @@
       "Bash(cd \"C:/Users/33769/Desktop/CCI/M2/C#/TD-Morpion-MAUI\" && dotnet build TD-Morpion-MAUI.sln 2>&1 | tail -20)",
       "Bash(cd \"C:/Users/33769/Desktop/CCI/M2/C#/TD-Morpion-MAUI\" && dotnet build TD-Morpion-MAUI.sln -f net10.0-windows10.0.19041.0 2>&1 | tail -10)",
       "Bash(cd \"C:/Users/33769/Desktop/CCI/M2/C#/TD-Morpion-MAUI\" && dotnet run --project TD-Morpion-MAUI 2>&1 | head -5)",
-      "Bash(cd \"C:/Users/33769/Desktop/CCI/M2/C#/TD-Morpion-MAUI\" && dotnet build TD-Morpion-MAUI.sln 2>&1 | tail -5)"
+      "Bash(cd \"C:/Users/33769/Desktop/CCI/M2/C#/TD-Morpion-MAUI\" && dotnet build TD-Morpion-MAUI.sln 2>&1 | tail -5)",
+      "Bash(dotnet --version)",
+      "Bash(dotnet --list-sdks)",
+      "Bash(dotnet workload *)",
+      "Bash(xcodebuild -version)",
+      "Read(//usr/local/share/dotnet/**)",
+      "Read(//Users/cstlli/.dotnet/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Read(//Users/cstlli/Library/Preferences/maui/**)",
+      "Read(//Users/cstlli/Library/Preferences/Xamarin/**)",
+      "Bash(mkdir -p ~/Library/Preferences/maui)",
+      "Bash(printf '%s\\\\n' '<?xml version=\"1.0\" encoding=\"UTF-8\"?>' '<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">' '<plist version=\"1.0\">' '<dict/>' '</plist>')",
+      "Bash(plutil -lint ~/Library/Preferences/maui/Settings.plist)",
+      "Bash(awk '{print \"PID\", $2, \"actif\"}')",
+      "Bash(lsof -nP -iTCP:5069 -sTCP:LISTEN)",
+      "Bash(curl -fsS http://localhost:5069/history)",
+      "Bash(lsof -nP -iTCP:7106 -sTCP:LISTEN)",
+      "Bash(awk '{print $2, $11, $12, $13}')",
+      "Bash(curl -s -o /dev/null -w \"5069 -> HTTP %{http_code} \\(000=injoignable\\)\\\\n\" http://localhost:5069/history)",
+      "Bash(curl -sk -o /dev/null -w \"7106 -> HTTP %{http_code} \\(000=injoignable\\)\\\\n\" https://localhost:7106/history)"
     ]
   }
 }

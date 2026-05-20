@@ -18,8 +18,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // Services
-        builder.Services.AddSingleton<IGameHistoryService, FakeGameHistoryService>();
+        // Services — client de l'API Morpion (le jeu est géré côté serveur)
+        builder.Services.AddSingleton<IMorpionApiService>(
+            _ => new MorpionApiService(new HttpClient { BaseAddress = new Uri(MorpionApiService.DefaultBaseUrl) }));
 
         // ViewModels
         builder.Services.AddTransient<MainViewModel>();
